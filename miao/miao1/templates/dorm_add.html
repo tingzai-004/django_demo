@@ -1,0 +1,38 @@
+{% extends "test.html" %}
+
+{% block content %}
+
+   <div class="container">
+        <div class="card-header" style="background-color: #e3f2fd; color: #5e9fb3;width: 81rem;margin-top: 10px;">
+        <div class="card-header" style="color: rgba(2, 9, 15, 0.274);">
+           <h3 style="margin-left: 20px;">{{title}}</h3> 
+        </div>
+            <ul class="list-group list-group-flush">
+                 <li class="list-group-item" style="background-color: #d5eafa;">
+                    <form method="POST">
+                        {% csrf_token %}
+                        {%for field in form%}
+                        <div class="mb-3">
+                            <label for="exampleFormControlInput1" class="form-label"> {{field.label}}</label>
+                            {{field}}
+                            <span style="color: red;">{{field.errors.0}}</span>
+                            {%endfor%}
+                        </div>
+                        <div class="container">
+                            <!-- <button type="submit" class="btn btn-primary"
+                                style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem; width:75px;height: 50px;" >
+                                提交信息
+                            </button> -->
+                            <button type="submit" class="btn btn-link" style="background-color: aquamarine;">提交</button>
+
+                        </div>
+                </li>
+
+            </ul>
+        </div>
+
+        </form>
+{% endblock %}
+</body>
+
+</html>

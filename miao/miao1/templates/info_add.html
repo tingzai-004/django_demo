@@ -1,0 +1,75 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'plugins/bootstrap-5.3.7/css/bootstrap.css' %}">
+</head>
+
+<body>
+     <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container">
+            <a class="navbar-brand" href="/info/">单位宿舍人员管理</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/admin_list/" aria-current="page" >管理员账户</a>
+                    </li>
+                    <li >
+                        <a class="nav-link" href="#">宿舍水电管理</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link "href="/dep_list/" aria-disabled="true" >部门管理</a>
+                    </li>
+                </ul>
+                <ul class="abc">
+                    <li type="none" class="a">
+                        <a href="#" class="nav-link" style="float: right">{{request.session.info.name}}</a>
+                    </li>
+                    <li type="none">
+                        注册
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="card" style="width: 81rem;margin-top: 10px;">
+            <div class="card-header">
+                {{title}}
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                    <form method="POST">
+                        {% csrf_token %}
+                        {%for field in form%}
+                        <div class="mb-3">
+                            <label for="exampleFormControlInput1" class="form-label"> {{field.label}}</label>
+                            {{field}}
+                            <span style="color: red;">{{field.errors.0}}</span>
+                            {%endfor%}
+                        </div>
+                        <div class="container">
+                            <button type="submit" class="btn btn-primary"
+                                style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem; width:75px;height: 50px;" >
+                                提交信息
+                            </button>
+
+                        </div>
+                </li>
+
+            </ul>
+        </div>
+
+        </form>
+</body>
+
+</html>

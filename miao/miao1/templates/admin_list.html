@@ -1,0 +1,90 @@
+{% extends "test.html" %}
+
+{% block content %}
+<div class="container" style="margin-top:20px;"><a class="btn btn-primary" href="/admin_add/" role="button"
+        style="background-color: cadetblue;">新建管理员</a></div>
+
+
+<div class="container">
+    <div class="card-header" style="background-color: #e3f2fd; color: #69ceec;width: 81rem;margin-top: 10px;">
+        <div class="card-header" style="color: rgba(2, 9, 15, 0.274);">
+           <h3>管理员账户</h3> 
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item" style="background-color: #e3f2fd;">
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" name="f" placeholder="Search" aria-label="Search" />
+                    <button class="btn btn-outline-success btn-xs"
+                        style="background-color: rgb(127, 217, 242);color: white;" type="submit">search</button>
+                </form>
+            </li>
+
+        </ul>
+    </div>
+    <div class="card" style="width: 81rem;margin-top: 20px;">
+        <div class="card-header">
+            注意以下是重要数据！
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col" style="color:black">id</th>
+                            <th scope="col">姓名</th>
+                            <th scope="col">密码</th>
+                            <th scope="col">手机号 </th>
+                            <th scope="col">重置密码</th>
+                            <th scope="col">操作</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {%for i in form%}
+                        <tr>
+                            <td>{{i.id}}</td>
+                            <td>{{i.name}}</td>
+                            <td>*******</td>
+                            <td>{{i.phone}}</td>
+                            <td>
+                                <a href="/admin_list/{{i.id}}/reset" class="btn btn-primary btn-sm"
+                                    style="background-color:rgb(127, 217, 242);">重置</a>
+                            </td>
+                            <td>
+                                <a href="/admin_list/{{i.id}}/editor" class="btn btn-primary btn-sm"
+                                    style="background-color: cadetblue;">编辑</a>
+                                <a href="/admin_list/{{i.id}}/delete" class="btn btn-danger btn-sm" style="background-color: #b76773;">删除</a>
+                            </td>
+
+                        </tr>
+                        {%endfor%}
+
+                    </tbody>
+
+
+                </table>
+            </li>
+
+        </ul>
+    </div>
+
+    <nav aria-label="Page navigation example">
+        <ul class="pagination">
+            <li class="page-item">
+                <a class="page-link" href="#" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item">
+                <a class="page-link" href="#" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</div>
+{% endblock %}
+</body>
+
+</html>

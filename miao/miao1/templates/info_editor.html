@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form method="POST" target="_blank">
+        {% csrf_token %}
+        <!-- 在新页面打开 -->
+        {%for f in form1%}
+        {{f.label}}:{{f}}
+        {%endfor%}
+        <span style="color:red">{{f.error.0}}</span>
+        <input type="submit" value="提交">
+    </form>
+</body>
+</html>

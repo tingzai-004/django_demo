@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../static/plugins/bootstrap-5.3.7/css/bootstrap.css">
+    <style>
+        .a {
+            width: 600px;
+            height: 450px;
+            border: 1px solid #dddddd;
+            box-shadow: 5px 5px 20px #aaa;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 200px;
+            padding: 20px 40px;
+
+        }
+
+        .a .b {
+            text-align: center;
+
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="a">
+        <h1 class="b">用户登录</h1>
+        <div style="margin-left:10px ; margin-right: 10;">
+            <form method="post" novalidate>
+                {% csrf_token %}
+                <div >
+                    <label class="form-label">用户名</label>
+                    {{form.name}}
+                    <span style="color: red;"> {{form.name.errors.0}}</span>
+                </div>
+                <div >
+                    <label class="form-label" >密码</label>
+                    {{form.password}}
+                    <span style="color: red;"> {{form.password.errors.0}}</span>
+                </div>
+                <div>
+                    <label class="form-label">验证码</label>
+                    {{form.code}}
+                    <span style="color: red;"> {{form.code.errors.0}}</span>
+                    <div class="col-5" style="margin-top: 5px; width:300px;">
+                        <div class="d-flex align-items-center">
+                            <img src="/imag/code/" alt="验证码" class="img-fluid captcha-img" id="captchaImage">
+                        </div>
+                    </div>
+                </div>
+        </div>
+        <button type="submit" class="btn btn-primary">提交</button>
+
+        </form>
+    </div>
+
+    </div>
+
+</body>
+
+</html>

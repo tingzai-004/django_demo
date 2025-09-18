@@ -1,0 +1,87 @@
+{% extends "test.html" %}
+
+{% block content %}
+    <div class="container" style="margin-top:20px;"><a class="btn btn-primary" href="/dorm_add/" role="button" style="background-color: cadetblue;">新建宿舍</a></div>
+     
+
+<div class="container">
+    <div class="card-header" style="background-color: #e3f2fd; color: #69ceec;width: 81rem;margin-top: 10px;">
+        <div class="card-header" style="color: rgba(2, 9, 15, 0.274);">
+           <h3>宿舍管理</h3> 
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item" style="background-color: #e3f2fd;">
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" name="q" placeholder="查询宿舍名称" aria-label="Search" />
+                    <button class="btn btn-outline-success btn-xs"
+                        style="background-color: rgb(127, 217, 242);color: white;" type="submit">search</button>
+                </form>
+            </li>
+
+        </ul>
+    </div>
+        <div class="card" style="width: 81rem;margin-top: 20px;">
+            <div class="card-header">
+                注意以下是重要数据！
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr >
+                                <th scope="col">宿舍号</th>
+                                <th scope="col">所在楼栋</th>
+                               
+                                <th scope="col">部门</th>
+                                <th scope="col">操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {%for i in form%}
+                            <tr  >
+                                <td>{{i.dorm_number}}</td>
+                                <td>{{i.building}}</td>
+                               
+                                <td>{{i.depart}}</td>
+                                <td>
+                                    <a href="/dorm/{{i.dorm_number}}/editor" class="btn btn-primary btn-sm" >编辑</a>
+                                    <a href="/dorm/{{i.dorm_number}}/delete" class="btn btn-danger btn-sm">删除</a>
+                                </td>
+
+                            </tr>
+                            {%endfor%}
+
+                        </tbody>
+
+
+                    </table>
+                </li>
+
+            </ul>
+        </div>
+
+
+    </div>
+    <!--分页-->
+ <!-- 极简分页 -->
+ <nav aria-label="Page navigation example">
+  <ul class="pagination">
+   
+    {{page_string}}
+  </ul>
+</nav>
+{% endblock %}
+</body>
+
+</html>
+<!-- page_obj.object_list - 当前页的对象列表
+
+page_obj.number - 当前页码
+
+page_obj.has_previous() - 是否有上一页
+
+page_obj.has_next() - 是否有下一页
+
+page_obj.previous_page_number() - 上一页页码
+
+page_obj.next_page_number()  -->

@@ -1,0 +1,40 @@
+{% extends "test.html" %}
+
+
+
+
+{% block content %}
+    <div class="container">
+        <div class="card" style="width: 81rem;margin-top: 10px;">
+            <div class="card-header">
+                {{title}}
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                    <form method="POST" novalidate>
+                       
+                       {% csrf_token %}
+                        {%for field in form%}
+                        <div class="mb-3">
+                            <label for="exampleFormControlInput1" class="form-label"> {{field.label}}</label>
+                            {{field}}
+                            <span style="color: red;">{{form.errors.0}}</span>
+                            {%endfor%}
+                        </div>
+                        <div class="container">
+                            <button type="submit" class="btn btn-primary"
+                                style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem; width:75px;height: 50px;" >
+                                提交信息
+                            </button>
+
+                        </div>
+                </li>
+
+            </ul>
+        </div>
+
+        </form>
+{% endblock %}
+</body>
+
+</html>
